@@ -1,0 +1,29 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libmtp"
+VERSION=1.1.6
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Media Transfer Protocol library for Win64 toolchain"
+DESCRIPTION="libmtp is an implementation of Microsoft's Media Transfer Protocol
+in the form of a library suitable primarily for POSIX compliant operating
+systems. We implement MTP Basic, the stuff proposed for standardization."
+HOMEPAGE="http://libmtp.sourceforge.net/"
+SRC_URI="mirror://sourceforge/libmtp/libmtp-${VERSION}.tar.gz"
+SRC_DIR="libmtp-${VERSION}"
+PATCH_URI="1.1.6-byteorder-win32.patch"
+
+DISTCLEANFILES="libmtp.pc src/gphoto2-endian.h"
+
+CPPFLAGS+=" -D__USE_MINGW_ANSI_STDIO=1"
+CYGCONF_ARGS="--disable-doxygen ac_cv_func_malloc_0_nonnull=yes"
+
+src_install() {
+	cd ${B}
+	cyginstall bin_PROGRAMS=
+	# symlinks to mtp-connect.exe
+	rm -f ${D}${CROSS_BINDIR}/mtp-*
+}
+
+DOCS="README.windows.txt"

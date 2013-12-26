@@ -1,0 +1,19 @@
+--- origsrc/libmtp-1.1.6/m4/byteorder.m4	2012-09-16 15:14:34.000000000 -0500
++++ src/libmtp-1.1.6/m4/byteorder.m4	2013-12-25 20:32:03.705499000 -0600
+@@ -81,8 +81,16 @@ EOF],
+ /* ntohl and relatives live here */
+ #include <netinet/in.h>
+ 
++EOF],
++
++ [AC_HAVE_SYMBOL(ntohl,winsock2.h,
++  [cat >> "$1" << EOF
++/* ntohl and relatives live here */
++#include <winsock2.h>
++
+ EOF],true)])
+ ])
++])
+ 
+ dnl Look for generic byte swapping macros
+ 
