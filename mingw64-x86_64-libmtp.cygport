@@ -3,7 +3,7 @@ inherit cross
 
 NAME="mingw64-x86_64-libmtp"
 VERSION=1.1.6
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="Media Transfer Protocol library for Win64 toolchain"
 DESCRIPTION="libmtp is an implementation of Microsoft's Media Transfer Protocol
